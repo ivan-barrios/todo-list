@@ -1,6 +1,7 @@
 import removeEvent from "./eventlisteners";
 
 
+
 //ADDS A REMOVE BUTTON
 function addRemoveOption(container) {
     const removeBtn = document.createElement('button');
@@ -11,6 +12,9 @@ function addRemoveOption(container) {
 
     container.appendChild(removeBtn);
 }
+
+
+
 
 
 
@@ -38,10 +42,8 @@ function createTodo(todoTitle, description, date, priority) {
     document.querySelector('.main-content').appendChild(todo);
 }
 
-
-
-//Parameters come from a form (When a project is added) 
-//To be exported to form
+//Creates a new project with name given
+//To be used in input
 function createProject(projectName) {
     const project = document.createElement('div');
     project.classList.add('project');
