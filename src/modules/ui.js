@@ -1,3 +1,6 @@
+import removeEvent from "./eventlisteners";
+
+
 
 
 //Parameters come from a form (When a project is added) 
@@ -5,15 +8,21 @@
 function createProject(projectName) {
     const project = document.createElement('div');
     project.textContent = projectName;
+
     addRemoveOption(project);
 
     document.querySelector('.projects').appendChild(project);
 }
 
-function addRemoveOption(cont) {
+
+function addRemoveOption(project) {
     const removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-btn');
-    removeBtn.textContent = R;
+    removeBtn.textContent = 'R';
 
-    removeBtn.addEventListener('click', (cont) => removeFrom(cont));
+    removeEvent(project, removeBtn);
+
+    project.appendChild(removeBtn);
 }
+
+export default createProject;

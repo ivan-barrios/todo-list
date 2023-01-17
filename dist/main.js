@@ -1,1 +1,1 @@
-console.log("todo ta bien pa");
+(()=>{"use strict";!function(e){const t=document.createElement("div");t.textContent="Hola",function(e){const t=document.createElement("button");var n;t.classList.add("remove-btn"),t.textContent="R",n=e,t.addEventListener("click",(()=>{n.remove()})),e.appendChild(t)}(t),document.querySelector(".projects").appendChild(t)}()})();
