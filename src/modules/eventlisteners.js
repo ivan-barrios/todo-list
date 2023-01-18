@@ -1,5 +1,3 @@
-
-
 //Removes complete container
 function removeEvent(container, btn) {
     btn.addEventListener('click', () => {
@@ -18,4 +16,4 @@ function addRemoveOption(container) {
     container.appendChild(removeBtn);
 }
 
-export {  };
+export default addRemoveOption;

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
@@ -19,6 +20,19 @@
         </div>
         <div id="mainContent" class="main-content">
             <h1 class="project-name"></h1>
+            <form id="newTodoForm" class="hidden">
+                <div class="inputField">
+                    <label>Title</label>
+                    <input type="text" id="todoTitleInput" placeholder="What task?">
+                    <textarea type="text" id="todoDescInput" wrap="hard"></textarea>
+                    <label>Date</label>
+                    <input type="date" id="todoDateInput">
+                    <div class="new-todo-btns">
+                        <button class="todoAddBtn">Add</button>
+                        <button class="todoCancelBtn">Cancel</button>
+                    </div>
+                </div>
+            </form>
             <button id="newTodo">Add Task</button>
         </div>
     </div>

@@ -1,45 +1,90 @@
+import addRemoveOption from "./eventlisteners";
 
 
-const TodoFactory = (title, desc, date, priority) => {
+let todoList = [];
+
+const TodoFactory = (title, desc, date) => {
     return {
         title,
         desc,
-        date,
-        priority
+        date
     };
 };
 
 
-
-
-
+//Form Event Listeners
 function newTodoEvent() {
     const newTodoBtn = document.getElementById('newTodo');
     newTodoBtn.addEventListener('click', openForm);
 
-    //More form btns
+    const todoCancelBtn = document.querySelector('.todoCancelBtn');
+    todoCancelBtn.addEventListener('click', hideForm);
+
+    const todoAddBtn = document.querySelector('.todoAddBtn');
+    todoAddBtn.addEventListener("click", (e) => {
+        processForm(e);
+        hideForm();
+    });
 }
 
 
-function createTodo(todoTitle, description, date, priority) {
-    const todo = document.createElement('div');
+//Functions from the Event Listeners
+function openForm() {
+    const form = document.getElementById('newTodoForm');
+    form.classList.remove('hidden');
+}
+function hideForm() {
+    const form = document.getElementById('newTodoForm');
+    document.getElementById('todoTitleInput').value = '';
+    document.getElementById('todoDescInput').value = '';
+    document.getElementById('todoDateInput').value = '';
+
+    form.classList.add('hidden');
+}
+
+
+//Processes the form values
+function processForm(e) {
+    e.preventDefault();
+    
+    const title = document.getElementById('todoTitleInput').value;
+    const desc = document.getElementById('todoDescInput').value;
+    const date = document.getElementById('todoDateInput').value;
+
+    const newTodo = TodoFactory(title, desc, date);
+
+    todoList.push(newTodo);
+    console.log(todoList);
+
+    addTodo(title, desc, date);
+}
+
+
+function addTodo(formTitle, formDesc, formDate) {
+    const mainContent = document.getElementById('mainContent');
+
+    const newTodo = document.createElement('div');
+
     const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
+    checkbox.type = "checkbox";
     const title = document.createElement('h2');
     const desc = document.createElement('p');
-    const dueDate = document.createElement('p');
+    const dueDate = document.createElement('div');
 
-    title.textContent = todoTitle;
-    desc.textContent = description;
-    dueDate.textContent = date;
+    title.textContent = formTitle;
+    desc.textContent = formDesc;
+    dueDate.textContent = formDate;
 
-    todo.appendChild(checkbox);
-    todo.appendChild(title);
-    todo.appendChild(desc);
-    todo.appendChild(dueDate);
-    todo.style.backgroundColor = priority; //if 'important' (priority=red);
+    newTodo.appendChild(checkbox);
+    newTodo.appendChild(title);
+    newTodo.appendChild(desc);
+    newTodo.appendChild(dueDate);
 
-    addRemoveOption(todo);
+    addRemoveOption(newTodo);
 
-    document.querySelector('.main-content').appendChild(todo);
+    mainContent.appendChild(newTodo);
+
 }
+
+
+export { newTodoEvent };
