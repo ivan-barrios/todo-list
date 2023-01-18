@@ -1,4 +1,4 @@
-import addRemoveOption from "./eventlisteners";
+import addRemoveOption from "./removeOption";
 
 
 let todoList = [];
@@ -18,12 +18,14 @@ function newTodoEvent() {
     newTodoBtn.addEventListener('click', openForm);
 
     const todoCancelBtn = document.querySelector('.todoCancelBtn');
-    todoCancelBtn.addEventListener('click', hideForm);
+    todoCancelBtn.addEventListener('click', (e) => {
+        hideForm(e);
+    });
 
     const todoAddBtn = document.querySelector('.todoAddBtn');
     todoAddBtn.addEventListener("click", (e) => {
         processForm(e);
-        hideForm();
+        hideForm(e);
     });
 }
 
@@ -33,7 +35,8 @@ function openForm() {
     const form = document.getElementById('newTodoForm');
     form.classList.remove('hidden');
 }
-function hideForm() {
+function hideForm(e) {
+    e.preventDefault();
     const form = document.getElementById('newTodoForm');
     document.getElementById('todoTitleInput').value = '';
     document.getElementById('todoDescInput').value = '';
