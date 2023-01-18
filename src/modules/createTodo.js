@@ -2,8 +2,7 @@ import addRemoveOption from "./removeOption";
 import { projectList } from "./createProject";
 
 
-let todoList = [];
-
+//TODO FACTORY
 const TodoFactory = (title, desc, date) => {
     return {
         title,
@@ -36,6 +35,7 @@ function openForm() {
     const form = document.getElementById('newTodoForm');
     form.classList.remove('hidden');
 }
+
 function hideForm(e) {
     e.preventDefault();
     const form = document.getElementById('newTodoForm');
@@ -57,15 +57,22 @@ function processForm(e) {
 
     const newTodo = TodoFactory(title, desc, date);
 
-    todoList.push(newTodo);
-    console.log(todoList);
+    const currentProjectName = document.querySelector('.project-name').textContent;
+    const currentProject = projectList.find(project => project.name == currentProjectName);
+    const index = projectList.indexOf(currentProject);
+    console.log(index);
 
-    addTodo(title, desc, date);
+    //DESPUES TENES QUE ARREGLARLO PARA QUE FUNCIONE EL ALL TASKS
+    if (index !== -1) {
+        projectList[index].todoList.push(newTodo);
+        addTodo(title, desc, date);
+    }
+    else alert('You should create and select a project!')
 }
 
 
 function addTodo(formTitle, formDesc, formDate) {
-    const mainContent = document.getElementById('mainContent');
+    const todoContainer = document.getElementById('todoContainer');
 
     const newTodo = document.createElement('div');
 
@@ -86,7 +93,7 @@ function addTodo(formTitle, formDesc, formDate) {
 
     addRemoveOption(newTodo);
 
-    mainContent.appendChild(newTodo);
+    todoContainer.appendChild(newTodo);
 
 }
 
