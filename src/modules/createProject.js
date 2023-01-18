@@ -1,3 +1,4 @@
+import addRemoveOption from "./removeOption";
 
 let projectList = [];
 
@@ -49,11 +50,22 @@ function hideForm(e) {
 function appendProject(name) {
     const project = document.createElement('div');
     const nameP = document.createElement('p');
+    nameP.setAttribute('id', 'pName');
     nameP.textContent = name;
 
     project.appendChild(nameP);
+    addRemoveOption(project);
+
+    project.addEventListener('click', (event) => {
+        projectTitleChange(event);
+    })
 
     document.getElementById('projects').appendChild(project);
+}
+
+function projectTitleChange(e) {
+    const name = e.target.innerText;
+    document.querySelector('.project-name').textContent = name;
 }
 
 
@@ -69,4 +81,4 @@ function ProjectFactory(name) {
 
 
 
-export { newProjectEvent};
+export { newProjectEvent, projectList };
