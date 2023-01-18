@@ -7,4 +7,15 @@ function removeEvent(container, btn) {
     });
 }
 
-export default removeEvent;
+//ADDS A REMOVE BUTTON
+function addRemoveOption(container) {
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-btn');
+    removeBtn.textContent = 'R';
+
+    removeEvent(container, removeBtn);
+
+    container.appendChild(removeBtn);
+}
+
+export {  };

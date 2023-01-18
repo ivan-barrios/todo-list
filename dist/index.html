@@ -8,15 +8,19 @@
 </head>
 <body>
     
-    <div id="container">
+    <div class="container">
         <div class="side-bar">
             <h1>Todo List</h1>
             <div class="all-todo">All tasks</div>
-            <div class="projects">
+            <div id="projects">
                 <h2>Projects:</h2>
+                <button id="newProject">New Project</button>
             </div>
         </div>
-        <div class="main-content"></div>
+        <div id="mainContent" class="main-content">
+            <h1 class="project-name"></h1>
+            <button id="newTodo">Add Task</button>
+        </div>
     </div>
 
     <script src="main.js"></script>
