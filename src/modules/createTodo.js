@@ -1,5 +1,5 @@
 import addRemoveOption from "./removeOption";
-import { projectList } from "./createProject";
+import { projectList, projectTitleChange, displayAllTodos } from "./createProject";
 
 
 //TODO FACTORY
@@ -24,6 +24,10 @@ function newTodoEvent() {
 
     const todoAddBtn = document.querySelector('.todoAddBtn');
     todoAddBtn.addEventListener("click", (e) => {
+        if (document.getElementById('todoTitleInput').value == "") {
+            alert('You should name it!');
+            return
+        }
         processForm(e);
         hideForm(e);
     });
@@ -60,14 +64,19 @@ function processForm(e) {
     const currentProjectName = document.querySelector('.project-name').textContent;
     const currentProject = projectList.find(project => project.name == currentProjectName);
     const index = projectList.indexOf(currentProject);
-    console.log(index);
 
     //DESPUES TENES QUE ARREGLARLO PARA QUE FUNCIONE EL ALL TASKS
     if (index !== -1) {
         projectList[index].todoList.push(newTodo);
         addTodo(title, desc, date);
     }
-    else alert('You should create and select a project!')
+    else {
+        projectList[0].todoList.push(newTodo);
+        console.log(projectList[0].todoList);
+        projectTitleChange(0);
+        displayAllTodos;
+        addTodo(title, desc, date);
+    }
 }
 
 

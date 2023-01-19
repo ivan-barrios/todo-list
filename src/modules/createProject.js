@@ -1,7 +1,9 @@
 import addRemoveOption from "./removeOption";
 
-let projectList = [];
-let id = 0;
+let projectList = [
+    {name: 'All tasks Project', id: 0, todoList: []},
+];
+let id = 1;
 
 
 //PROJECT FACTORY
@@ -23,6 +25,10 @@ function newProjectEvent() {
     const submitProjectBtn = document.getElementById('submitProjectBtn');
     submitProjectBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        if (document.getElementById('projectNameInput').value == "") {
+            alert('You should name it!');
+            return
+        }
         addProject();
         hideForm();
     });
@@ -32,6 +38,14 @@ function newProjectEvent() {
         e.preventDefault();
         hideForm();
     });
+
+    //All tasks button
+    const allTodoBtn = document.getElementById('allTodos');
+    allTodoBtn.addEventListener('click', () => {
+        document.querySelector('.project-name').textContent = 'All Tasks:';
+        clearTodoContainer();
+        displayAllTodos();
+    })
 }
 
 
@@ -84,8 +98,7 @@ function projectTitleChange(idNum) {
 }
 
 function appendTodoList(idNum) {
-    const todoContainer = document.getElementById('todoContainer');
-    todoContainer.innerHTML = '';
+    clearTodoContainer();
 
     for (let i = 0; i < projectList[idNum].todoList.length; i++) {
         const newTodo = document.createElement('div');
@@ -111,5 +124,38 @@ function appendTodoList(idNum) {
     }
 }
 
+function clearTodoContainer() {
+    const todoContainer = document.getElementById('todoContainer');
+    todoContainer.innerHTML = '';
+}
 
-export { newProjectEvent, projectList };
+function displayAllTodos() {
+    projectList.forEach((project) => {
+        project.todoList.forEach((todo) => {
+            const newTodo = document.createElement('div');
+
+            const checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            const title = document.createElement('h2');
+            const desc = document.createElement('p');
+            const dueDate = document.createElement('div');
+
+            title.textContent = todo.title;
+            desc.textContent = todo.desc;
+            dueDate.textContent = todo.dueDate;
+
+            newTodo.appendChild(checkbox);
+            newTodo.appendChild(title);
+            newTodo.appendChild(desc);
+            newTodo.appendChild(dueDate);
+
+            addRemoveOption(newTodo);
+
+            todoContainer.appendChild(newTodo);
+
+        })
+    })
+}
+
+
+export { newProjectEvent, projectList, projectTitleChange, displayAllTodos};

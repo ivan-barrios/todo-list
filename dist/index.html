@@ -12,12 +12,12 @@
     <div class="container">
         <div class="side-bar">
             <h1>Todo List</h1>
-            <div class="all-todo">All tasks</div>
+            <button id="allTodos">All tasks</button>
             <div id="projects">
                 <h2>Projects:</h2>
                 <div id="projectsContainer"></div>
                 <form id="projectForm" class="hidden">
-                    <input type="text" placeholder="Project Name" id="projectNameInput">
+                    <input type="text" placeholder="Project Name" id="projectNameInput" required>
                     <div class="new-project-btns">
                         <button type="submit" id="submitProjectBtn">Add</button>
                         <button id="cancelProjectBtn">Cancel</button>
@@ -32,7 +32,7 @@
             <form id="newTodoForm" class="hidden">
                 <div class="inputField">
                     <label>Title</label>
-                    <input type="text" id="todoTitleInput" placeholder="What task?">
+                    <input type="text" id="todoTitleInput" placeholder="What task?" required>
                     <textarea type="text" id="todoDescInput" wrap="hard"></textarea>
                     <label>Date</label>
                     <input type="date" id="todoDateInput">
