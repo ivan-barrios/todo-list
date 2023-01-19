@@ -23,18 +23,18 @@
                         <button id="cancelProjectBtn">Cancel</button>
                     </div>
                 </form>
-                <button id="newProject">New Project</button>
+                <button id="newProject">+ New Project</button>
             </div>
         </div>
         <div id="mainContent" class="main-content">
-            <h1 class="project-name"></h1>
+            <h1 class="project-name">All Tasks:</h1>
             <div id="todoContainer"></div>
             <form id="newTodoForm" class="hidden">
                 <div class="inputField">
-                    <label>Title</label>
+                    <label class="title-label">Title</label>
                     <input type="text" id="todoTitleInput" placeholder="What task?" required>
-                    <textarea type="text" id="todoDescInput" wrap="hard"></textarea>
-                    <label>Date</label>
+                    <textarea type="text" id="todoDescInput" placeholder="Description..."></textarea>
+                    <label class="date-label">Date</label>
                     <input type="date" id="todoDateInput">
                     <div class="new-todo-btns">
                         <button class="todoAddBtn">Add</button>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </form>
-            <button id="newTodo">Add Task</button>
+            <button id="newTodo">+ Add Task</button>
         </div>
     </div>
 

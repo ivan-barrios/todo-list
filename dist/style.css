@@ -1,3 +1,212 @@
+body {
+    margin: 0;
+    font-family:sans-serif;
+    color: white;
+}
+
+/* Project Form */
 .hidden {
     display: none;
+}
+.showing-pf {
+    display:grid;
+    grid-template: 1fr 1fr / 1fr;
+}
+.new-project-btns {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    padding: 1rem;
+}
+#submitProjectBtn {
+    background-color: rgb(142, 231, 142);
+    font-size: 1.5rem;
+    border: none;
+    padding: .5rem;
+    cursor: pointer;
+}
+#cancelProjectBtn {
+    background-color: rgb(230, 126, 126);
+    font-size: 1.5rem;
+    border: none;
+    padding: .5rem;
+    cursor: pointer;
+}
+#projectNameInput {
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+
+/* Page UI */
+.container {
+    background-color: rgb(27, 27, 27);
+    height: 100vh;
+    display: grid;
+    grid-template-columns: .5fr 2fr;
+    gap: 2rem;
+}
+
+/* Side bar */
+.side-bar {
+    background-color: rgb(48, 48, 48);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.side-bar > h1 {
+    padding: 1rem;
+}
+#allTodos {
+    background-color: rgb(160, 160, 160);
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    border: none;
+}
+#allTodos:hover {
+    background-color: rgb(187, 187, 187);
+    cursor: pointer;
+}
+#projects {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+#projectsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.project-child {
+    display: grid;
+    grid-template-columns: 3fr .5fr;
+}
+.project-child > button {
+    background-color: rgb(48, 48, 48);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+.project-child > .remove-btn {
+    color: black;
+    background-color: rgb(114, 1, 1);
+    border-radius: 100px;
+}
+.remove-btn:hover {
+    background-color: rgb(83, 0, 0);
+}
+
+#newProject {
+    width: 100%;
+    font-size: 1.5rem;
+    font-family: inherit;
+    background-color: rgb(27, 27, 27);
+    border: none;
+    color: white;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+/* Main content */
+.main-content {
+    background-color: rgb(27, 27, 27);
+}
+
+/* When showing form */
+.showing-tdf {
+    height: fit-content;
+}
+.inputField {
+    width: 80%;
+    display: grid;
+    grid-template: 1fr 2fr 1fr / .5fr 3fr;
+    gap: 1rem;
+}
+.title-label, .date-label {
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5rem;
+}
+#todoTitleInput {
+    grid-column: 2 / 3;
+    font-size: 1.5rem;
+}
+#todoDescInput {
+    grid-column: 1 / 3;
+    resize: none;
+    height: 4rem;
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+#todoDateInput {
+    font-size: 1.5rem;
+}
+.new-todo-btns {
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+    gap: 3.5rem;
+    padding: 1rem;
+}
+.todoAddBtn {
+    background-color: rgb(142, 231, 142);
+    font-size: 1.5rem;
+    border: none;
+    padding: .5rem;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.todoCancelBtn {
+    background-color: rgb(230, 126, 126);
+    font-size: 1.5rem;
+    border: none;
+    padding: .5rem;
+    cursor: pointer;
+    border-radius: 20px;
+}
+#newTodo {
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+#newTodo:hover{
+    background-color: rgb(190, 190, 190);
+}
+.todoDiv {
+    display: grid;
+    grid-template-columns: .3fr 2fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    font-size: 1.5rem;
+    gap: 1rem;
+}
+.todoDiv > input[type="checkbox"] {
+    width: 2rem;
+}
+.date {
+    align-self: center;
+}
+.desc {
+    grid-column: 1 / 6;
+}
+.todoDiv > .remove-btn {
+    justify-self: end;
+    align-self: center;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: rgb(185, 4, 4);
+}
+.todoDiv > .remove-btn:hover {
+    background-color: rgb(97, 1, 1);
 }

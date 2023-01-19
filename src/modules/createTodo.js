@@ -38,6 +38,7 @@ function newTodoEvent() {
 function openForm() {
     const form = document.getElementById('newTodoForm');
     form.classList.remove('hidden');
+    form.classList.add('showing-tdf');
 }
 
 function hideForm(e) {
@@ -48,6 +49,7 @@ function hideForm(e) {
     document.getElementById('todoDateInput').value = '';
 
     form.classList.add('hidden');
+    form.classList.remove('showing-tdf');
 }
 
 
@@ -74,8 +76,8 @@ function processForm(e) {
         projectList[0].todoList.push(newTodo);
         console.log(projectList[0].todoList);
         projectTitleChange(0);
-        displayAllTodos;
-        addTodo(title, desc, date);
+        displayAllTodos();
+        
     }
 }
 
@@ -84,12 +86,15 @@ function addTodo(formTitle, formDesc, formDate) {
     const todoContainer = document.getElementById('todoContainer');
 
     const newTodo = document.createElement('div');
+    newTodo.classList.add('todoDiv');
 
     const checkbox = document.createElement('input');
     checkbox.type = "checkbox";
     const title = document.createElement('h2');
     const desc = document.createElement('p');
+    desc.classList.add('desc');
     const dueDate = document.createElement('div');
+    dueDate.classList.add('date');
 
     title.textContent = formTitle;
     desc.textContent = formDesc;
@@ -97,11 +102,12 @@ function addTodo(formTitle, formDesc, formDate) {
 
     newTodo.appendChild(checkbox);
     newTodo.appendChild(title);
-    newTodo.appendChild(desc);
     newTodo.appendChild(dueDate);
-
+    
     addRemoveOption(newTodo);
 
+    newTodo.appendChild(desc);
+    
     todoContainer.appendChild(newTodo);
 
 }

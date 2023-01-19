@@ -9,7 +9,7 @@ function removeEvent(container, btn) {
 function addRemoveOption(container) {
     const removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-btn');
-    removeBtn.textContent = 'R';
+    removeBtn.textContent = 'X';
 
     removeEvent(container, removeBtn);
 

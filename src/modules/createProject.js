@@ -1,7 +1,7 @@
 import addRemoveOption from "./removeOption";
 
 let projectList = [
-    {name: 'All tasks Project', id: 0, todoList: []},
+    {name: 'All Tasks:', id: 0, todoList: []},
 ];
 let id = 1;
 
@@ -53,6 +53,7 @@ function newProjectEvent() {
 function showProjectForm() {
     const form = document.getElementById('projectForm');
     form.classList.remove('hidden');
+    form.classList.add('showing-pf');
 }
 
 function addProject() {
@@ -69,6 +70,7 @@ function hideForm() {
     document.getElementById('projectNameInput').value = '';
     const form = document.getElementById('projectForm');
     form.classList.add('hidden');
+    form.classList.remove('showing-pf');
 }
 
 function appendProject(name) {
@@ -102,6 +104,7 @@ function appendTodoList(idNum) {
 
     for (let i = 0; i < projectList[idNum].todoList.length; i++) {
         const newTodo = document.createElement('div');
+        newTodo.classList.add('todoDiv');
 
         const checkbox = document.createElement('input');
         checkbox.type = "checkbox";
@@ -111,14 +114,16 @@ function appendTodoList(idNum) {
 
         title.textContent = projectList[idNum].todoList[i].title;
         desc.textContent = projectList[idNum].todoList[i].desc;
-        dueDate.textContent = projectList[idNum].todoList[i].dueDate;
+        desc.classList.add('desc');
+        dueDate.textContent = projectList[idNum].todoList[i].date;
+        dueDate.classList.add('date');
 
         newTodo.appendChild(checkbox);
         newTodo.appendChild(title);
-        newTodo.appendChild(desc);
         newTodo.appendChild(dueDate);
-
+        
         addRemoveOption(newTodo);
+        newTodo.appendChild(desc);
 
         todoContainer.appendChild(newTodo);
     }
@@ -133,24 +138,27 @@ function displayAllTodos() {
     projectList.forEach((project) => {
         project.todoList.forEach((todo) => {
             const newTodo = document.createElement('div');
+            newTodo.classList.add('todoDiv');
 
             const checkbox = document.createElement('input');
             checkbox.type = "checkbox";
             const title = document.createElement('h2');
             const desc = document.createElement('p');
+            desc.classList.add('desc');
             const dueDate = document.createElement('div');
+            dueDate.classList.add('date');
 
             title.textContent = todo.title;
             desc.textContent = todo.desc;
-            dueDate.textContent = todo.dueDate;
+            dueDate.textContent = todo.date;
 
             newTodo.appendChild(checkbox);
             newTodo.appendChild(title);
-            newTodo.appendChild(desc);
             newTodo.appendChild(dueDate);
-
+            
             addRemoveOption(newTodo);
-
+            newTodo.appendChild(desc);
+            
             todoContainer.appendChild(newTodo);
 
         })
